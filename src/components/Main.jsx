@@ -19,6 +19,31 @@ export default function Main() {
     fabricRef.current.renderAll();
   };
 
+  // Add and style text
+
+  const addText = () => {
+    const text = new fabric.IText("Type here...", {
+      left: 100,
+      top: 100,
+      fontFamily: "Arial",
+      fill: "#333333",
+      fontSize: 20,
+    });
+    fabricRef.current.add(text);
+    fabricRef.current.setActiveObject(text);
+    fabricRef.current.renderAll();
+  };
+
+  const changeTextProperty = (property, value) => {
+    const activeObject = fabricRef.current.getActiveObject();
+
+    // Check if an object is selected and if it's a text type
+    if (activeObject && activeObject.type.includes("text")) {
+      activeObject.set(property, value);
+      fabricRef.current.renderAll();
+    }
+  };
+
   // Upload image
 
   function handleImageUploader(e) {
@@ -46,6 +71,8 @@ export default function Main() {
     reader.readAsDataURL(file);
   }
 
+  // Render canvas
+
   React.useEffect(() => {
     fabricRef.current = new fabric.Canvas(canvasRef.current, {
       width: 400,
@@ -66,8 +93,10 @@ export default function Main() {
     <main>
       <Bag canvasRef={canvasRef} />
       <Sidebar
-        onChangeImg={handleImageUploader}
-        onChangeBg={handleBgColorChange}
+        addImg={handleImageUploader}
+        addText={addText}
+        changeTextProperty={changeTextProperty}
+        addBg={handleBgColorChange}
       />
     </main>
   );
