@@ -52,7 +52,7 @@ main {
   color: black;
   width: 450px;
   height: 600px;
-  padding-bottom: .9rem;
+  padding-bottom: 0.9rem;
   border-radius: 8px;
 }
 
@@ -73,8 +73,26 @@ canvas {
   border-radius: 8px;
 }
 
-input {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+.bg-color, .text-styles, .image-styles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
   background-color: aliceblue;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.image-styles {
+  width: 12rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.file-upload {
+  cursor: pointer;
 }
