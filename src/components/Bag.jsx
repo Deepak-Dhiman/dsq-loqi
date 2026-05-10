@@ -4,7 +4,6 @@ export default function Bag(props) {
     <section className="display">
       <div className="bag">
         <canvas ref={props.canvasRef}></canvas>
-        <span>{props.bagText}</span>
       </div>
     </section>
   );
